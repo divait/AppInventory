@@ -2,10 +2,14 @@ package co.divait.appinventory.utils;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import co.divait.appinventory.entities.AppObject;
+import co.divait.appinventory.entities.JsonApp;
 import co.divait.appinventory.network.HttpCall;
 
 /**
@@ -17,7 +21,7 @@ import co.divait.appinventory.network.HttpCall;
 public class Parser {
 
     public interface Callback {
-        void onApps (String data);
+        void onApps (AppObject[] apps);
         void onTitle (String title);
         void onRights (String rights);
         void onError (String error);
@@ -47,7 +51,13 @@ public class Parser {
             callback.onTitle(feed.getJSONObject("title").getString("label"));
             callback.onRights(feed.getJSONObject("rights").getString("label"));
 
-            JSONArray apps = feed.getJSONArray("entry");
+            String apps = feed.getString("entry");
+
+            Gson gson = new Gson();
+            JsonApp[] appObj = gson.fromJson(apps, JsonApp[].class);
+
+            callback.onApps(AppObject.fromJsonAppToAppObject(appObj));
+
         } catch (JSONException e) {
             e.printStackTrace();
             callback.onError("Incorrect Data.");
