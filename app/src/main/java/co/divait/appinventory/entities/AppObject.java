@@ -1,14 +1,17 @@
 package co.divait.appinventory.entities;
 
+
+import com.orm.SugarRecord;
+
 /**
  * Created by divait on 9/01/2017.
  *
  * The App element.
  */
 
-public class AppObject {
+public class AppObject extends SugarRecord{
 
-    private long id;
+    private Long id;
     private String name;
     private String summary;
     private String image;
@@ -19,6 +22,8 @@ public class AppObject {
     private String artist;
     private String category;
     private String release_date;
+
+    public AppObject() {}
 
     public AppObject(long id, String name, String summary, String image, float price, String currency, String rights, String link, String artist, String category, String release_date) {
         this.id = id;
@@ -32,6 +37,10 @@ public class AppObject {
         this.artist = artist;
         this.category = category;
         this.release_date = release_date;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public static AppObject[] fromJsonAppToAppObject(JsonApp[] jsonApps) {

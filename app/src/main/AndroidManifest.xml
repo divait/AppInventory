@@ -24,10 +24,10 @@
         <activity android:name=".app_details.DetailsActivity" >
         </activity>
 
-        <meta-data android:name="DATABASE" android:value="apps_apple.db" />
-        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="DATABASE" android:value="apps_inv.db" />
+        <meta-data android:name="VERSION" android:value="2" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="co.divait.appsinventory" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="co.divait.appinventory" />
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package co.divait.appinventory.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 import co.divait.appinventory.R;
 import co.divait.appinventory.entities.AppObject;
@@ -28,7 +27,9 @@ public class Data implements Parser.Callback {
 
     @Override
     public void onApps(AppObject[] apps) {
-
+        for(AppObject appObject : apps) {
+            appObject.save();
+        }
     }
 
     @Override
