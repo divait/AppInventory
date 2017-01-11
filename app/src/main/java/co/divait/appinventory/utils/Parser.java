@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import co.divait.appinventory.R;
 import co.divait.appinventory.entities.AppObject;
 import co.divait.appinventory.entities.JsonApp;
 import co.divait.appinventory.network.HttpCall;
@@ -27,13 +28,13 @@ public class Parser {
         void onError (String error);
     }
 
-    public static void getData(Context context, final Callback callback) {
+    public static void getData(final Context context, final Callback callback) {
         HttpCall httpCall = new HttpCall(context);
         httpCall.getMainData(new HttpCall.Callback() {
 
             @Override
             public void onSuccess(String response) {
-                parseMainData(response, callback);
+                parseMainData(response, context, callback);
             }
 
             @Override
@@ -43,7 +44,7 @@ public class Parser {
         });
     }
 
-    private static void parseMainData(String response, Callback callback) {
+    private static void parseMainData(String response, Context context, Callback callback) {
         try {
             JSONObject json = new JSONObject(response);
             JSONObject feed = json.getJSONObject("feed");
@@ -60,7 +61,7 @@ public class Parser {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            callback.onError("Incorrect Data.");
+            callback.onError(context.getString(R.string.error_parsing_data));
         }
     }
 }

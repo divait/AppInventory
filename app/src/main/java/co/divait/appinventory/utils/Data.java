@@ -3,8 +3,11 @@ package co.divait.appinventory.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import org.greenrobot.eventbus.EventBus;
+
 import co.divait.appinventory.R;
 import co.divait.appinventory.entities.AppObject;
+import co.divait.appinventory.events.DataSaveEvent;
 
 /**
  * Created by divait on 9/01/2017.
@@ -30,6 +33,8 @@ public class Data implements Parser.Callback {
         for(AppObject appObject : apps) {
             appObject.save();
         }
+
+        EventBus.getDefault().post(new DataSaveEvent(true, null));
     }
 
     @Override
@@ -48,7 +53,7 @@ public class Data implements Parser.Callback {
 
     @Override
     public void onError(String error) {
-
+        EventBus.getDefault().post(new DataSaveEvent(false, error));
     }
 
     private SharedPreferences getPreferences() {

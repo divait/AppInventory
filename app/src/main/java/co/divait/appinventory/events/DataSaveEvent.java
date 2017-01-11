@@ -9,8 +9,10 @@ package co.divait.appinventory.events;
 public class DataSaveEvent {
 
     public final boolean isSave;
+    public final String message;
 
-    public DataSaveEvent(boolean isSave) {
+    public DataSaveEvent(boolean isSave, String message) {
         this.isSave = isSave;
+        this.message = message;
     }
 }
