@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">App Inventory</string>
+    <string name="data_file_key">data</string>
+    <string name="data_title">data_title</string>
+    <string name="data_rights">data_rights</string>
+    <string name="error_parsing_data">Error Parsing Data</string>
+    <string name="price">$%s</string>
 </resources>
