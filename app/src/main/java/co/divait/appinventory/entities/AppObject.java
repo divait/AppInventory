@@ -67,4 +67,44 @@ public class AppObject extends SugarRecord{
                 jsonApp.getReleaseDate().getAttributes().getLabel()
         );
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getRights() {
+        return rights;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getRelease_date() {
+        return release_date;
+    }
 }

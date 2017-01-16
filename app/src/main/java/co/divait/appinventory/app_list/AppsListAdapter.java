@@ -52,7 +52,10 @@ public class AppsListAdapter extends RecyclerView.Adapter<AppsListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(Long.toString(apps.get(position).getId()));
+        holder.title.setText(apps.get(position).getName());
+        holder.summary.setText(apps.get(position).getSummary());
+        holder.price.setText(holder.itemView.getContext().getString(R.string.price, Float.toString(apps.get(position).getPrice())));
+        holder.artist.setText(apps.get(position).getArtist());
     }
 
     @Override
@@ -62,11 +65,17 @@ public class AppsListAdapter extends RecyclerView.Adapter<AppsListAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
+        public TextView summary;
+        public TextView price;
+        public TextView artist;
         public ImageView image;
 
         public ViewHolder(View v) {
             super(v);
             title = (TextView) v.findViewById(R.id.text_list);
+            summary = (TextView) v.findViewById(R.id.text_list_summary);
+            price = (TextView) v.findViewById(R.id.text_list_price);
+            artist = (TextView) v.findViewById(R.id.text_list_creator);
             image = (ImageView)v.findViewById(R.id.image_list);
 
         }
