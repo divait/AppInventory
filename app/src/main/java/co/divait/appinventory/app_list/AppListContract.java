@@ -26,7 +26,10 @@ public interface AppListContract {
     }
 
     interface Presenter extends BasePresenter {
+
         void loadApps(boolean forceUpdate);
+
+        void showApps(List<AppObject> apps);
 
         void openAppDetails(@NonNull AppObject requestedApp); // TODO
     }

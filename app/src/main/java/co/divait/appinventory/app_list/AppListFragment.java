@@ -29,7 +29,7 @@ public class AppListFragment extends Fragment implements AppListContract.View {
     private AppsListAdapter listAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private AppListPresenter presenter;
+    private AppListContract.Presenter presenter;
 
     private RecyclerView list;
 
@@ -78,14 +78,14 @@ public class AppListFragment extends Fragment implements AppListContract.View {
         return root;
     }
 
-        @Override
+    @Override
     public void setLoadingIndicator(boolean active) {
         // TODO
     }
 
     @Override
     public void showApps(List<AppObject> apps) {
-        // TODO
+        listAdapter.replaceData(apps);
     }
 
     @Override
@@ -100,6 +100,6 @@ public class AppListFragment extends Fragment implements AppListContract.View {
 
     @Override
     public void setPresenter(AppListContract.Presenter presenter) {
-        presenter = checkNotNull(presenter);
+        this.presenter = checkNotNull(presenter);
     }
 }

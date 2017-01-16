@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.List;
+
 import co.divait.appinventory.R;
 import co.divait.appinventory.entities.AppObject;
 import co.divait.appinventory.events.DataSaveEvent;
@@ -27,6 +29,9 @@ public class Data implements Parser.Callback {
         Parser.getData(context, this);
     }
 
+    public List<AppObject> getDataSaved() {
+        return AppObject.listAll(AppObject.class);
+    }
 
     @Override
     public void onApps(AppObject[] apps) {
